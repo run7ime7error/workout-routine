@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>6-Day PPL — previous JS version</title>
+  <style>
+    :root { --bg:#0b0c0f; --panel:#14161b; --line:#2c3038; --text:#eceae4; --muted:#9b9ba4; --accent:#e23d2a; --ok:#c8f542; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:15px/1.5 "Segoe UI",sans-serif; }
+    a { color:var(--ok); }
+    header, nav, main, footer { max-width:1080px; margin:0 auto; padding:16px 20px; }
+    h1 { margin:0 0 8px; }
+    .grid2 { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:3px; background:#e23d2a; min-height:380px; }
+    .cell { min-height:180px; background:#111; position:relative; overflow:hidden; }
+    .cell img, .cell video { width:100%; height:100%; object-fit:cover; display:block; }
+    .tag { position:absolute; left:8px; top:8px; background:#e23d2a; color:#fff; font-size:11px; padding:3px 6px; border-radius:4px; }
+    .ex { background:var(--panel); border:1px solid var(--line); border-radius:12px; margin:0 0 16px; overflow:hidden; }
+    .ex-head { display:flex; justify-content:space-between; padding:12px 14px; border-bottom:1px solid var(--line); }
+    .empty { display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:13px; text-align:center; padding:12px;
+      background: repeating-conic-gradient(#15171c 0% 25%, #0e1014 0% 50%) 50% / 20px 20px; }
+    .copy { padding:12px 16px; color:#d7d5cf; }
+    nav a { margin-right:8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Previous version (JS 2×2)</h1>
+    <p>This is the version that looked blank in chat preview because cards were injected by script. Open this file in a browser. Current static file is <code>ppl-6day-guide.html</code>.</p>
+  </header>
+  <nav>
+    <a href="ppl-6day-guide.html">current static</a>
+    <a href="ppl-6day-guide-v1-gifs.html">v1 gif hover</a>
+  </nav>
+  <main id="app"><p style="color:#f0c36d">If this line stays, JS did not run. Use the static file instead.</p></main>
+  <footer>assets/{id}/still-front.jpg still-side.jpg map.png front.mp4 side.mp4</footer>
+<script>
+const MW = "https://musclewiki.com/exercise";
+const GIF = "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0";
+const DAYS = [
+  ["d1","Day 1 — Push A",[
+    ["p1-incline-db","Incline DB press ~30°","4×6–10","dumbbell-incline-bench-press","pectorals/dumbbell-incline-bench-press"],
+    ["p1-bench","Barbell bench press","3×5–8","barbell-bench-press","pectorals/barbell-bench-press"],
+    ["p1-ohp","DB overhead press","3×6–10","dumbbell-seated-overhead-press","delts/dumbbell-standing-overhead-press"],
+    ["p1-cable-lat","Cable lateral raise","3×12–15","cable-low-single-arm-lateral-raise","delts/cable-lateral-raise"],
+    ["p1-oh-tri","Overhead DB extension","3×10–15","dumbbell-seated-overhead-tricep-extension","triceps/dumbbell-seated-triceps-ext"]
+  ]],
+  ["d2","Day 2 — Pull A",[
+    ["p2-pullup","Pull-up","4×6–10","pull-up","lats/pull-up-neutral-grip"],
+    ["p2-row","Barbell row","4×6–10","barbell-bent-over-row","lats/barbell-bent-over-row"],
+    ["p2-sap","Straight-arm pulldown","3×10–15","cable-bent-over-bar-pullover","lats/cable-straight-arm-pulldown"],
+    ["p2-inc-curl","Incline DB curl","3×8–12","dumbbell-incline-curl","biceps/dumbbell-incline-curl"],
+    ["p2-rear","Rear-delt fly","3×12–15","dumbbell-seated-rear-delt-fly","delts/cable-seated-rear-lateral-raise"]
+  ]],
+  ["d3","Day 3 — Legs A",[
+    ["l1-squat","Barbell squat","4×6–10","barbell-squat","quads/barbell-full-squat"],
+    ["l1-rdl","RDL","3×6–10","barbell-stiff-leg-deadlifts","hamstrings/barbell-romanian-deadlift"],
+    ["l1-ext","Leg extension","3×10–15","machine-leg-extension","quads/lever-leg-extension"],
+    ["l1-calf","Standing calf raise","4×8–15","standing-calf-raise","calves/barbell-standing-calf-raise"],
+    ["l1-hang","Hanging leg raise","3×8–15","hanging-leg-raise","abs/hanging-leg-hip-raise"]
+  ]],
+  ["d4","Day 4 — Push B",[
+    ["p4-inc-bb","Barbell incline press","4×6–10","barbell-incline-bench-press","pectorals/barbell-incline-bench-press"],
+    ["p4-dip","Dip","3×6–10","box-dips","triceps/weighted-triceps-dip-on-high-parallel-bars"],
+    ["p4-fly","Cable fly","3×10–15","cable-pec-fly","pectorals/cable-standing-fly"],
+    ["p4-db-lat","DB lateral raise","3×12–15","dumbbell-lateral-raise","delts/dumbbell-lateral-raise"],
+    ["p4-pushdown","Pushdown","3×10–15","cable-pushdown","triceps/cable-pushdown"]
+  ]],
+  ["d5","Day 5 — Pull B",[
+    ["p5-dbrow","DB row","4×8–12","dumbbell-row-bilateral","lats/dumbbell-one-arm-bent-over-row"],
+    ["p5-pulldown","Lat pulldown","3×8–12","lat-pulldown","lats/cable-pulldown-pro-lat-bar"],
+    ["p5-bbcurl","Barbell curl","3×8–12","barbell-curl","biceps/barbell-curl"],
+    ["p5-hammer","Hammer curl","2–3×10–12","dumbbell-hammer-curl","biceps/dumbbell-hammer-curl"],
+    ["p5-shrug","Shrug","3×8–15","barbell-shrug","traps/barbell-shrug"]
+  ]],
+  ["d6","Day 6 — Legs B",[
+    ["l2-bss","Bulgarian split squat","3×8–12","bulgarian-split-squat","glutes/dumbbell-bulgarian-split-squat"],
+    ["l2-curl","Leg curl","3×10–15","lying-leg-curl","hamstrings/lever-lying-leg-curl"],
+    ["l2-thrust","Hip thrust","3×8–12","barbell-hip-thrust","glutes/barbell-hip-thrust"],
+    ["l2-seated-calf","Seated calf","3×10–15","seated-calf-raise","calves/lever-seated-calf-raise"],
+    ["l2-pallof","Pallof press","3×8–12","pallof-press","abs/band-horizontal-pallof-press"]
+  ]]
+];
+const root = document.getElementById("app");
+root.innerHTML = "";
+DAYS.forEach(([id,title,items]) => {
+  const sec = document.createElement("section");
+  sec.innerHTML = `<h2 id="${id}">${title}</h2>`;
+  items.forEach(([eid,name,sets,mw,gif]) => {
+    const art = document.createElement("article");
+    art.className = "ex";
+    art.innerHTML = `<div class="ex-head"><h3><a href="${MW}/${mw}" target="_blank">${name}</a></h3><div>${sets} · ${eid}</div></div>
+      <div class="grid2">
+        <div class="cell"><span class="tag">1×1 stills</span><img src="${GIF}/${gif}.gif" alt=""></div>
+        <div class="cell empty"><span class="tag">1×2 map</span>assets/${eid}/map.png</div>
+        <div class="cell empty"><span class="tag">2×1 front</span>assets/${eid}/front.mp4</div>
+        <div class="cell empty"><span class="tag">2×2 side</span>assets/${eid}/side.mp4</div>
+      </div>
+      <div class="copy"><a href="${MW}/${mw}">${MW}/${mw}</a></div>`;
+    sec.appendChild(art);
+  });
+  root.appendChild(sec);
+});
+</script>
+</body>
+</html>
