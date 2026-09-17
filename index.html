@@ -1,105 +1,447 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>6-Day PPL — previous JS version</title>
-  <style>
-    :root { --bg:#0b0c0f; --panel:#14161b; --line:#2c3038; --text:#eceae4; --muted:#9b9ba4; --accent:#e23d2a; --ok:#c8f542; }
-    * { box-sizing: border-box; }
-    body { margin:0; background:var(--bg); color:var(--text); font:15px/1.5 "Segoe UI",sans-serif; }
-    a { color:var(--ok); }
-    header, nav, main, footer { max-width:1080px; margin:0 auto; padding:16px 20px; }
-    h1 { margin:0 0 8px; }
-    .grid2 { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:3px; background:#e23d2a; min-height:380px; }
-    .cell { min-height:180px; background:#111; position:relative; overflow:hidden; }
-    .cell img, .cell video { width:100%; height:100%; object-fit:cover; display:block; }
-    .tag { position:absolute; left:8px; top:8px; background:#e23d2a; color:#fff; font-size:11px; padding:3px 6px; border-radius:4px; }
-    .ex { background:var(--panel); border:1px solid var(--line); border-radius:12px; margin:0 0 16px; overflow:hidden; }
-    .ex-head { display:flex; justify-content:space-between; padding:12px 14px; border-bottom:1px solid var(--line); }
-    .empty { display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:13px; text-align:center; padding:12px;
-      background: repeating-conic-gradient(#15171c 0% 25%, #0e1014 0% 50%) 50% / 20px 20px; }
-    .copy { padding:12px 16px; color:#d7d5cf; }
-    nav a { margin-right:8px; }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>6-day PPL</title>
+<style>
+:root { --bg:#0b0c0f; --panel:#14161b; --line:#2a2e36; --text:#eceae4; --muted:#8e8e97; --ok:#c8f542; }
+* { box-sizing:border-box; }
+html,body { margin:0; background:var(--bg); color:var(--text); font:15px/1.45 system-ui,sans-serif; }
+a { color:var(--ok); text-decoration:none; }
+a:hover { text-decoration:underline; }
+header,nav,main { max-width:980px; margin:0 auto; }
+header { padding:22px 20px 8px; }
+h1 { margin:0; font-size:22px; font-weight:650; }
+nav { display:flex; flex-wrap:wrap; gap:6px; padding:0 20px 12px; position:sticky; top:0; background:var(--bg); z-index:5; }
+nav a { border:1px solid var(--line); padding:5px 9px; border-radius:6px; color:var(--text); font-size:13px; }
+section { padding:8px 20px 20px; }
+h2 { margin:18px 0 12px; font-size:16px; font-weight:600; color:var(--muted); }
+.ex { background:var(--panel); border:1px solid var(--line); border-radius:10px; margin:0 0 14px; overflow:hidden; }
+.ex-head { display:flex; justify-content:space-between; gap:10px; align-items:baseline; padding:10px 12px; }
+.ex-head h3 { margin:0; font-size:16px; font-weight:600; }
+.sets { color:var(--ok); font-variant-numeric:tabular-nums; font-size:13px; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2px; background:var(--line); min-height:360px; }
+.cell { background:#0a0b0e; min-height:170px; overflow:hidden; position:relative; }
+.cell img, .cell video { width:100%; height:100%; object-fit:cover; display:block; }
+.cell video:not([src]), .cell video { position:absolute; inset:0; }
+.cell video { z-index:1; }
+.cell img { z-index:0; }
+ol { margin:0; padding:10px 12px 12px 28px; color:#cfcfc8; font-size:13.5px; }
+ol li { margin:0 0 3px; }
+.cell:has(video[data-ok]) img { display:none; }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Previous version (JS 2×2)</h1>
-    <p>This is the version that looked blank in chat preview because cards were injected by script. Open this file in a browser. Current static file is <code>ppl-6day-guide.html</code>.</p>
-  </header>
-  <nav>
-    <a href="ppl-6day-guide.html">current static</a>
-    <a href="ppl-6day-guide-v1-gifs.html">v1 gif hover</a>
-  </nav>
-  <main id="app"><p style="color:#f0c36d">If this line stays, JS did not run. Use the static file instead.</p></main>
-  <footer>assets/{id}/still-front.jpg still-side.jpg map.png front.mp4 side.mp4</footer>
+<header><h1>6-day PPL</h1></header>
+<nav><a href="#d1">1 Push A</a><a href="#d2">2 Pull A</a><a href="#d3">3 Legs A</a><a href="#d4">4 Push B</a><a href="#d5">5 Pull B</a><a href="#d6">6 Legs B</a></nav>
+<main>
+<section id="d1"><h2>Day 1 — Push A</h2>
+<article class="ex" id="p1-incline-db">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/dumbbell-incline-bench-press" target="_blank" rel="noopener">Incline DB press ~30°</a></h3>
+    <span class="sets">4×6–10</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/dumbbell-incline-bench-press.gif" alt=""></div>
+    <div class="cell"><img src="assets/p1-incline-db/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p1-incline-db/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/dumbbell-incline-bench-press.gif" alt=""></div>
+    <div class="cell"><video src="assets/p1-incline-db/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Lay on the incline bench, feet down, arms straight.</li><li>Lower to mid-chest.</li><li>Press to lockout. Bench ~30°.</li></ol>
+</article>
+<article class="ex" id="p1-bench">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/barbell-bench-press" target="_blank" rel="noopener">Barbell bench press</a></h3>
+    <span class="sets">3×5–8</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/barbell-bench-press.gif" alt=""></div>
+    <div class="cell"><img src="assets/p1-bench/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p1-bench/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/barbell-bench-press.gif" alt=""></div>
+    <div class="cell"><video src="assets/p1-bench/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Unrack with straight arms, feet down.</li><li>Lower to mid-chest.</li><li>Press to lockout.</li></ol>
+</article>
+<article class="ex" id="p1-ohp">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/dumbbell-seated-overhead-press" target="_blank" rel="noopener">DB overhead press</a></h3>
+    <span class="sets">3×6–10</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/dumbbell-standing-overhead-press.gif" alt=""></div>
+    <div class="cell"><img src="assets/p1-ohp/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p1-ohp/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/dumbbell-standing-overhead-press.gif" alt=""></div>
+    <div class="cell"><video src="assets/p1-ohp/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Dumbbells at shoulders, palms forward.</li><li>Press up. Pause.</li><li>Lower to start.</li></ol>
+</article>
+<article class="ex" id="p1-cable-lat">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/cable-low-single-arm-lateral-raise" target="_blank" rel="noopener">Cable lateral raise</a></h3>
+    <span class="sets">3×12–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/cable-lateral-raise.gif" alt=""></div>
+    <div class="cell"><img src="assets/p1-cable-lat/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p1-cable-lat/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/cable-lateral-raise.gif" alt=""></div>
+    <div class="cell"><video src="assets/p1-cable-lat/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Low cable, handle in hand.</li><li>Raise arm to parallel.</li><li>Lower under control.</li></ol>
+</article>
+<article class="ex" id="p1-oh-tri">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/dumbbell-seated-overhead-tricep-extension" target="_blank" rel="noopener">Overhead DB extension</a></h3>
+    <span class="sets">3×10–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/triceps/dumbbell-seated-triceps-ext.gif" alt=""></div>
+    <div class="cell"><img src="assets/p1-oh-tri/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p1-oh-tri/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/triceps/dumbbell-seated-triceps-ext.gif" alt=""></div>
+    <div class="cell"><video src="assets/p1-oh-tri/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Dumbbell overhead, both hands.</li><li>Lower behind the head, elbows in.</li><li>Extend.</li></ol>
+</article>
+</section><section id="d2"><h2>Day 2 — Pull A</h2>
+<article class="ex" id="p2-pullup">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/pull-up" target="_blank" rel="noopener">Pull-up</a></h3>
+    <span class="sets">4×6–10</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/pull-up-neutral-grip.gif" alt=""></div>
+    <div class="cell"><img src="assets/p2-pullup/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p2-pullup/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/pull-up-neutral-grip.gif" alt=""></div>
+    <div class="cell"><video src="assets/p2-pullup/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Dead hang.</li><li>Pull chest to bar.</li><li>Lower to full hang.</li></ol>
+</article>
+<article class="ex" id="p2-row">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/barbell-bent-over-row" target="_blank" rel="noopener">Barbell row</a></h3>
+    <span class="sets">4×6–10</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/barbell-bent-over-row.gif" alt=""></div>
+    <div class="cell"><img src="assets/p2-row/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p2-row/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/barbell-bent-over-row.gif" alt=""></div>
+    <div class="cell"><video src="assets/p2-row/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Hinge, flat back.</li><li>Pull to upper abdomen.</li><li>Lower controlled.</li></ol>
+</article>
+<article class="ex" id="p2-sap">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/cable-bent-over-bar-pullover" target="_blank" rel="noopener">Straight-arm pulldown</a></h3>
+    <span class="sets">3×10–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/cable-straight-arm-pulldown.gif" alt=""></div>
+    <div class="cell"><img src="assets/p2-sap/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p2-sap/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/cable-straight-arm-pulldown.gif" alt=""></div>
+    <div class="cell"><video src="assets/p2-sap/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>High cable, lean forward.</li><li>Sweep to thighs with the shoulders.</li><li>Return to stretch.</li></ol>
+</article>
+<article class="ex" id="p2-inc-curl">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/dumbbell-incline-curl" target="_blank" rel="noopener">Incline DB curl</a></h3>
+    <span class="sets">3×8–12</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/biceps/dumbbell-incline-curl.gif" alt=""></div>
+    <div class="cell"><img src="assets/p2-inc-curl/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p2-inc-curl/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/biceps/dumbbell-incline-curl.gif" alt=""></div>
+    <div class="cell"><video src="assets/p2-inc-curl/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Hang on an incline.</li><li>Curl, palm to shoulder.</li><li>Full lower.</li></ol>
+</article>
+<article class="ex" id="p2-rear">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/dumbbell-seated-rear-delt-fly" target="_blank" rel="noopener">Rear-delt fly</a></h3>
+    <span class="sets">3×12–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/cable-seated-rear-lateral-raise.gif" alt=""></div>
+    <div class="cell"><img src="assets/p2-rear/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p2-rear/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/cable-seated-rear-lateral-raise.gif" alt=""></div>
+    <div class="cell"><video src="assets/p2-rear/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Hinge.</li><li>Raise arms to shoulder line.</li><li>Lower.</li></ol>
+</article>
+</section><section id="d3"><h2>Day 3 — Legs A</h2>
+<article class="ex" id="l1-squat">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/barbell-squat" target="_blank" rel="noopener">Barbell squat</a></h3>
+    <span class="sets">4×6–10</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/quads/barbell-full-squat.gif" alt=""></div>
+    <div class="cell"><img src="assets/l1-squat/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/l1-squat/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/quads/barbell-full-squat.gif" alt=""></div>
+    <div class="cell"><video src="assets/l1-squat/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Bar on upper back.</li><li>Hips below knees.</li><li>Stand.</li></ol>
+</article>
+<article class="ex" id="l1-rdl">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/barbell-stiff-leg-deadlifts" target="_blank" rel="noopener">RDL</a></h3>
+    <span class="sets">3×6–10</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/hamstrings/barbell-romanian-deadlift.gif" alt=""></div>
+    <div class="cell"><img src="assets/l1-rdl/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/l1-rdl/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/hamstrings/barbell-romanian-deadlift.gif" alt=""></div>
+    <div class="cell"><video src="assets/l1-rdl/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Soft knees.</li><li>Hips back until hams load.</li><li>Stand.</li></ol>
+</article>
+<article class="ex" id="l1-ext">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/machine-leg-extension" target="_blank" rel="noopener">Leg extension</a></h3>
+    <span class="sets">3×10–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/quads/lever-leg-extension.gif" alt=""></div>
+    <div class="cell"><img src="assets/l1-ext/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/l1-ext/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/quads/lever-leg-extension.gif" alt=""></div>
+    <div class="cell"><video src="assets/l1-ext/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Seat back, 90° start.</li><li>Extend.</li><li>Lower slow.</li></ol>
+</article>
+<article class="ex" id="l1-calf">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/standing-calf-raise" target="_blank" rel="noopener">Standing calf raise</a></h3>
+    <span class="sets">4×8–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/calves/barbell-standing-calf-raise.gif" alt=""></div>
+    <div class="cell"><img src="assets/l1-calf/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/l1-calf/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/calves/barbell-standing-calf-raise.gif" alt=""></div>
+    <div class="cell"><video src="assets/l1-calf/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Heels hang.</li><li>Stretch.</li><li>Rise.</li></ol>
+</article>
+<article class="ex" id="l1-hang">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/hanging-leg-raise" target="_blank" rel="noopener">Hanging leg raise</a></h3>
+    <span class="sets">3×8–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abs/hanging-leg-hip-raise.gif" alt=""></div>
+    <div class="cell"><img src="assets/l1-hang/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/l1-hang/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abs/hanging-leg-hip-raise.gif" alt=""></div>
+    <div class="cell"><video src="assets/l1-hang/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Hang.</li><li>Curl pelvis, legs up.</li><li>Lower quiet.</li></ol>
+</article>
+</section><section id="d4"><h2>Day 4 — Push B</h2>
+<article class="ex" id="p4-inc-bb">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/barbell-incline-bench-press" target="_blank" rel="noopener">Barbell incline press</a></h3>
+    <span class="sets">4×6–10</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/barbell-incline-bench-press.gif" alt=""></div>
+    <div class="cell"><img src="assets/p4-inc-bb/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p4-inc-bb/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/barbell-incline-bench-press.gif" alt=""></div>
+    <div class="cell"><video src="assets/p4-inc-bb/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>30–45° bench.</li><li>Bar to mid-chest.</li><li>Press.</li></ol>
+</article>
+<article class="ex" id="p4-dip">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/box-dips" target="_blank" rel="noopener">Dip</a></h3>
+    <span class="sets">3×6–10</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/triceps/weighted-triceps-dip-on-high-parallel-bars.gif" alt=""></div>
+    <div class="cell"><img src="assets/p4-dip/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p4-dip/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/triceps/weighted-triceps-dip-on-high-parallel-bars.gif" alt=""></div>
+    <div class="cell"><video src="assets/p4-dip/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Lockout on bars.</li><li>Lower.</li><li>Press up.</li></ol>
+</article>
+<article class="ex" id="p4-fly">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/cable-pec-fly" target="_blank" rel="noopener">Cable fly</a></h3>
+    <span class="sets">3×10–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/cable-standing-fly.gif" alt=""></div>
+    <div class="cell"><img src="assets/p4-fly/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p4-fly/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/pectorals/cable-standing-fly.gif" alt=""></div>
+    <div class="cell"><video src="assets/p4-fly/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Pins at shoulder height.</li><li>Hug, elbows fixed.</li><li>Open to stretch.</li></ol>
+</article>
+<article class="ex" id="p4-db-lat">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/dumbbell-lateral-raise" target="_blank" rel="noopener">DB lateral raise</a></h3>
+    <span class="sets">3×12–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/dumbbell-lateral-raise.gif" alt=""></div>
+    <div class="cell"><img src="assets/p4-db-lat/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p4-db-lat/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/dumbbell-lateral-raise.gif" alt=""></div>
+    <div class="cell"><video src="assets/p4-db-lat/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Palms to hips.</li><li>Raise to parallel.</li><li>Lower slow.</li></ol>
+</article>
+<article class="ex" id="p4-pushdown">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/cable-pushdown" target="_blank" rel="noopener">Pushdown</a></h3>
+    <span class="sets">3×10–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/triceps/cable-pushdown.gif" alt=""></div>
+    <div class="cell"><img src="assets/p4-pushdown/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p4-pushdown/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/triceps/cable-pushdown.gif" alt=""></div>
+    <div class="cell"><video src="assets/p4-pushdown/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Elbows pinned.</li><li>Extend.</li><li>Return.</li></ol>
+</article>
+</section><section id="d5"><h2>Day 5 — Pull B</h2>
+<article class="ex" id="p5-dbrow">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/dumbbell-row-bilateral" target="_blank" rel="noopener">DB row</a></h3>
+    <span class="sets">4×8–12</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/dumbbell-one-arm-bent-over-row.gif" alt=""></div>
+    <div class="cell"><img src="assets/p5-dbrow/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p5-dbrow/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/dumbbell-one-arm-bent-over-row.gif" alt=""></div>
+    <div class="cell"><video src="assets/p5-dbrow/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Hinge, flat back.</li><li>Elbow to hip.</li><li>Long hang.</li></ol>
+</article>
+<article class="ex" id="p5-pulldown">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/lat-pulldown" target="_blank" rel="noopener">Lat pulldown</a></h3>
+    <span class="sets">3×8–12</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/cable-pulldown-pro-lat-bar.gif" alt=""></div>
+    <div class="cell"><img src="assets/p5-pulldown/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p5-pulldown/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/lats/cable-pulldown-pro-lat-bar.gif" alt=""></div>
+    <div class="cell"><video src="assets/p5-pulldown/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Full overhead stretch.</li><li>Bar to upper chest.</li><li>Return long.</li></ol>
+</article>
+<article class="ex" id="p5-bbcurl">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/barbell-curl" target="_blank" rel="noopener">Barbell curl</a></h3>
+    <span class="sets">3×8–12</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/biceps/barbell-curl.gif" alt=""></div>
+    <div class="cell"><img src="assets/p5-bbcurl/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p5-bbcurl/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/biceps/barbell-curl.gif" alt=""></div>
+    <div class="cell"><video src="assets/p5-bbcurl/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Elbows still.</li><li>Curl to shoulders.</li><li>Lower long.</li></ol>
+</article>
+<article class="ex" id="p5-hammer">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/dumbbell-hammer-curl" target="_blank" rel="noopener">Hammer curl</a></h3>
+    <span class="sets">2–3×10–12</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/biceps/dumbbell-hammer-curl.gif" alt=""></div>
+    <div class="cell"><img src="assets/p5-hammer/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p5-hammer/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/biceps/dumbbell-hammer-curl.gif" alt=""></div>
+    <div class="cell"><video src="assets/p5-hammer/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Thumbs up.</li><li>Curl to chest.</li><li>Lower.</li></ol>
+</article>
+<article class="ex" id="p5-shrug">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/barbell-shrug" target="_blank" rel="noopener">Shrug</a></h3>
+    <span class="sets">3×8–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/traps/barbell-shrug.gif" alt=""></div>
+    <div class="cell"><img src="assets/p5-shrug/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/p5-shrug/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/traps/barbell-shrug.gif" alt=""></div>
+    <div class="cell"><video src="assets/p5-shrug/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Bar at thighs.</li><li>Shoulders straight up.</li><li>Lower. No roll.</li></ol>
+</article>
+</section><section id="d6"><h2>Day 6 — Legs B</h2>
+<article class="ex" id="l2-bss">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/bulgarian-split-squat" target="_blank" rel="noopener">Bulgarian split squat</a></h3>
+    <span class="sets">3×8–12 / leg</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/glutes/dumbbell-bulgarian-split-squat.gif" alt=""></div>
+    <div class="cell"><img src="assets/l2-bss/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/l2-bss/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/glutes/dumbbell-bulgarian-split-squat.gif" alt=""></div>
+    <div class="cell"><video src="assets/l2-bss/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Rear foot on bench.</li><li>Drop back knee.</li><li>Drive front foot.</li></ol>
+</article>
+<article class="ex" id="l2-curl">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/lying-leg-curl" target="_blank" rel="noopener">Leg curl</a></h3>
+    <span class="sets">3×10–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/hamstrings/lever-lying-leg-curl.gif" alt=""></div>
+    <div class="cell"><img src="assets/l2-curl/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/l2-curl/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/hamstrings/lever-lying-leg-curl.gif" alt=""></div>
+    <div class="cell"><video src="assets/l2-curl/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Hips glued.</li><li>Curl to glutes.</li><li>Lower long.</li></ol>
+</article>
+<article class="ex" id="l2-thrust">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/barbell-hip-thrust" target="_blank" rel="noopener">Hip thrust</a></h3>
+    <span class="sets">3×8–12</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/glutes/barbell-hip-thrust.gif" alt=""></div>
+    <div class="cell"><img src="assets/l2-thrust/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/l2-thrust/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/glutes/barbell-hip-thrust.gif" alt=""></div>
+    <div class="cell"><video src="assets/l2-thrust/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Shoulders on bench, bar on hips.</li><li>Extend hips.</li><li>Lower.</li></ol>
+</article>
+<article class="ex" id="l2-seated-calf">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/seated-calf-raise" target="_blank" rel="noopener">Seated calf</a></h3>
+    <span class="sets">3×10–15</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/calves/lever-seated-calf-raise.gif" alt=""></div>
+    <div class="cell"><img src="assets/l2-seated-calf/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/l2-seated-calf/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/calves/lever-seated-calf-raise.gif" alt=""></div>
+    <div class="cell"><video src="assets/l2-seated-calf/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Heels hang.</li><li>Stretch.</li><li>Rise.</li></ol>
+</article>
+<article class="ex" id="l2-pallof">
+  <div class="ex-head">
+    <h3><a href="https://musclewiki.com/exercise/pallof-press" target="_blank" rel="noopener">Pallof press</a></h3>
+    <span class="sets">3×8–12 / side</span>
+  </div>
+  <div class="grid2">
+    <div class="cell"><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abs/band-horizontal-pallof-press.gif" alt=""></div>
+    <div class="cell"><img src="assets/l2-pallof/map.png" alt="" onerror="this.remove()"></div>
+    <div class="cell"><video src="assets/l2-pallof/front.mp4" muted loop playsinline></video><img src="https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abs/band-horizontal-pallof-press.gif" alt=""></div>
+    <div class="cell"><video src="assets/l2-pallof/side.mp4" muted loop playsinline></video></div>
+  </div>
+  <ol><li>Side-on to cable.</li><li>Press out, no twist.</li><li>Return.</li></ol>
+</article>
+</section>
+</main>
 <script>
-const MW = "https://musclewiki.com/exercise";
-const GIF = "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0";
-const DAYS = [
-  ["d1","Day 1 — Push A",[
-    ["p1-incline-db","Incline DB press ~30°","4×6–10","dumbbell-incline-bench-press","pectorals/dumbbell-incline-bench-press"],
-    ["p1-bench","Barbell bench press","3×5–8","barbell-bench-press","pectorals/barbell-bench-press"],
-    ["p1-ohp","DB overhead press","3×6–10","dumbbell-seated-overhead-press","delts/dumbbell-standing-overhead-press"],
-    ["p1-cable-lat","Cable lateral raise","3×12–15","cable-low-single-arm-lateral-raise","delts/cable-lateral-raise"],
-    ["p1-oh-tri","Overhead DB extension","3×10–15","dumbbell-seated-overhead-tricep-extension","triceps/dumbbell-seated-triceps-ext"]
-  ]],
-  ["d2","Day 2 — Pull A",[
-    ["p2-pullup","Pull-up","4×6–10","pull-up","lats/pull-up-neutral-grip"],
-    ["p2-row","Barbell row","4×6–10","barbell-bent-over-row","lats/barbell-bent-over-row"],
-    ["p2-sap","Straight-arm pulldown","3×10–15","cable-bent-over-bar-pullover","lats/cable-straight-arm-pulldown"],
-    ["p2-inc-curl","Incline DB curl","3×8–12","dumbbell-incline-curl","biceps/dumbbell-incline-curl"],
-    ["p2-rear","Rear-delt fly","3×12–15","dumbbell-seated-rear-delt-fly","delts/cable-seated-rear-lateral-raise"]
-  ]],
-  ["d3","Day 3 — Legs A",[
-    ["l1-squat","Barbell squat","4×6–10","barbell-squat","quads/barbell-full-squat"],
-    ["l1-rdl","RDL","3×6–10","barbell-stiff-leg-deadlifts","hamstrings/barbell-romanian-deadlift"],
-    ["l1-ext","Leg extension","3×10–15","machine-leg-extension","quads/lever-leg-extension"],
-    ["l1-calf","Standing calf raise","4×8–15","standing-calf-raise","calves/barbell-standing-calf-raise"],
-    ["l1-hang","Hanging leg raise","3×8–15","hanging-leg-raise","abs/hanging-leg-hip-raise"]
-  ]],
-  ["d4","Day 4 — Push B",[
-    ["p4-inc-bb","Barbell incline press","4×6–10","barbell-incline-bench-press","pectorals/barbell-incline-bench-press"],
-    ["p4-dip","Dip","3×6–10","box-dips","triceps/weighted-triceps-dip-on-high-parallel-bars"],
-    ["p4-fly","Cable fly","3×10–15","cable-pec-fly","pectorals/cable-standing-fly"],
-    ["p4-db-lat","DB lateral raise","3×12–15","dumbbell-lateral-raise","delts/dumbbell-lateral-raise"],
-    ["p4-pushdown","Pushdown","3×10–15","cable-pushdown","triceps/cable-pushdown"]
-  ]],
-  ["d5","Day 5 — Pull B",[
-    ["p5-dbrow","DB row","4×8–12","dumbbell-row-bilateral","lats/dumbbell-one-arm-bent-over-row"],
-    ["p5-pulldown","Lat pulldown","3×8–12","lat-pulldown","lats/cable-pulldown-pro-lat-bar"],
-    ["p5-bbcurl","Barbell curl","3×8–12","barbell-curl","biceps/barbell-curl"],
-    ["p5-hammer","Hammer curl","2–3×10–12","dumbbell-hammer-curl","biceps/dumbbell-hammer-curl"],
-    ["p5-shrug","Shrug","3×8–15","barbell-shrug","traps/barbell-shrug"]
-  ]],
-  ["d6","Day 6 — Legs B",[
-    ["l2-bss","Bulgarian split squat","3×8–12","bulgarian-split-squat","glutes/dumbbell-bulgarian-split-squat"],
-    ["l2-curl","Leg curl","3×10–15","lying-leg-curl","hamstrings/lever-lying-leg-curl"],
-    ["l2-thrust","Hip thrust","3×8–12","barbell-hip-thrust","glutes/barbell-hip-thrust"],
-    ["l2-seated-calf","Seated calf","3×10–15","seated-calf-raise","calves/lever-seated-calf-raise"],
-    ["l2-pallof","Pallof press","3×8–12","pallof-press","abs/band-horizontal-pallof-press"]
-  ]]
-];
-const root = document.getElementById("app");
-root.innerHTML = "";
-DAYS.forEach(([id,title,items]) => {
-  const sec = document.createElement("section");
-  sec.innerHTML = `<h2 id="${id}">${title}</h2>`;
-  items.forEach(([eid,name,sets,mw,gif]) => {
-    const art = document.createElement("article");
-    art.className = "ex";
-    art.innerHTML = `<div class="ex-head"><h3><a href="${MW}/${mw}" target="_blank">${name}</a></h3><div>${sets} · ${eid}</div></div>
-      <div class="grid2">
-        <div class="cell"><span class="tag">1×1 stills</span><img src="${GIF}/${gif}.gif" alt=""></div>
-        <div class="cell empty"><span class="tag">1×2 map</span>assets/${eid}/map.png</div>
-        <div class="cell empty"><span class="tag">2×1 front</span>assets/${eid}/front.mp4</div>
-        <div class="cell empty"><span class="tag">2×2 side</span>assets/${eid}/side.mp4</div>
-      </div>
-      <div class="copy"><a href="${MW}/${mw}">${MW}/${mw}</a></div>`;
-    sec.appendChild(art);
-  });
-  root.appendChild(sec);
+document.querySelectorAll("video").forEach(v => {
+  v.addEventListener("loadeddata", () => v.dataset.ok = "1");
+  v.addEventListener("error", () => v.remove());
+  const cell = v.parentElement;
+  cell.addEventListener("mouseenter", () => v.play().catch(()=>{}));
+  cell.addEventListener("mouseleave", () => v.pause());
 });
 </script>
 </body>
